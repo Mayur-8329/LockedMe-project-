@@ -1,0 +1,191 @@
+package LockedMe;
+
+
+import java.io.File;
+
+import java.util.Scanner; 
+
+public class Clientapp {
+static final String projectFilepath= "C:\\Lockmeapplication";
+
+
+
+	public static void main(String[] args) {
+	Scanner obj = new Scanner (System.in);
+	int ch; 
+	do
+	{
+	LockedMe.displaymenu();
+	System.out.println("Enter your choice");
+	ch=Integer.parseInt(obj.nextLine());
+	switch(ch)
+	{
+	case 1: LockedMe.getAllFiles();	
+	        break ; 
+	case 2: LockedMe.createFile();
+	         break;
+	case 3:  LockedMe.deleteFiles();
+               break;
+    case 4:  LockedMe.searchFile();
+                   break;
+                 
+	}
+	
+	obj.next();
+	obj.close();
+	}
+	while(ch<0);
+	}
+	}
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+package LockedMe;  
+import java.util.*; 
+import java.io.*; 
+import java.lang.reflect.TypeVariable;  
+  
+ public class LockedMe  
+{  
+   
+  static String projectFilespath="C:\\Lockmeapplication";  
+  
+ public static void displaymenu()  
+ {  
+    System.out.println("\t\t*********************************");  
+    System.out.println("\t\t Welcome to Lockedme secured app");  
+    System.out.println("\t\t    Developed by Mayur Funde");  
+    System.out.println("\t\t*********************************");  
+    System.out.println("\t\t\t1.Display the all File ");  
+    System.out.println("\t\t\t2.Add files to existing directory");  
+    System.out.println("\t\t\t3.Delete a File");  
+    System.out.println("\t\t\t4.search a  File ");  
+    System.out.println("\t\t\t5.exit the File");  
+  }  
+ public static void getAllFiles()  
+ {  
+    
+  File folder = new File(projectFilespath); 
+  File[] listofFiles =  folder.listFiles();
+  if(listofFiles.length>0)  
+{  
+   System.out.println("Files list is displyed below:\\n");  
+    
+ for (var l: listofFiles)  
+  { 
+    
+   System.out.println(l.getName());  
+  }  
+}
+   else   
+   {  
+    System.out.println("File is empty ");   
+   }  
+ }  
+  
+  
+ public static void createFile()   
+ {  
+  try   
+  {  
+   Scanner obj = new Scanner (System.in);  
+   String fileName;  
+  
+   System.out.println("Enter the File Name ");  
+   fileName = obj.nextLine();  
+   
+   int linesCount = 0;  
+   System.out.println("Enter how many line in the File");
+   linesCount=Integer.parseInt(obj.nextLine());
+   FileWriter fw = new FileWriter(projectFilespath+"\\"+fileName);
+  for (int i = 1 ; i<=linesCount;i++) {  
+     
+  System.out.println("Enter file content line.");  
+  fw.write(obj.nextLine()+"\n");  
+  }  
+    
+  System.out.println("File Created Successfully");  
+  fw.close();  
+    
+    
+  }  
+   
+  catch (Exception e)   
+  {  
+                System.out.println("Some error occured");  
+  }  
+ }  
+  
+  
+  
+             public static void deleteFiles()  
+
+             
+             
+             
+         {  
+           Scanner obj = new Scanner(System.in);  
+           try  
+           {  
+           String fileName;  
+           System.out.println("Enter the name");
+            fileName=obj.nextLine();  
+          File fl = new File(projectFilespath+"\\"+fileName);  
+             
+           if (fl.exists())  
+           {  
+            fl.delete();  
+            System.out.println("File deleted successfully");  
+              
+              
+           }  
+           else   
+          {  
+            System.out.println("file is  not exist");  
+          }  
+          } 
+             
+           catch(Exception ex)  
+            
+           {  
+                System.out.println("Some error occured");  
+                  
+                 
+           }  
+             
+             
+           }     
+            
+           public static void searchFile() {  
+              
+             
+          try  
+          {  
+           String fileName;  
+           Scanner obj = new Scanner (System.in);  
+           System.out.println("Enter file name to be search:");  
+           fileName=obj.nextLine();  
+           File fl = new File (projectFilespath+"\\"+fileName);  
+            
+           if (fl.exists()) {  
+            System.out.println("File is available");  
+              
+          }  
+           else  
+           {  
+            System.out.println("File is not available");  
+           } 
+           }  
+           catch  (Exception e) 
+           {}           
+      } 
+    }
+
+	
+	   
+
+	
+
+
+
